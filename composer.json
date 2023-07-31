@@ -1,0 +1,14 @@
+{
+    "name": "zxz112/php-oop-project-60",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\": "src/"
+        },
+        "autoload-dev": {
+            "psr-4": { "Hexlet\\Tests\\": "tests/" }
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10"
+    }
+}
