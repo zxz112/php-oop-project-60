@@ -1,5 +1,5 @@
 {
-    "name": "zxz112/php-oop-project-60",
+    "name": "hexlet/code",
     "autoload": {
         "psr-4": {
             "Hexlet\\": "src/"
