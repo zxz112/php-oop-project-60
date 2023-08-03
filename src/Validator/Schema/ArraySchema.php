@@ -12,7 +12,7 @@ class ArraySchema implements SchemaInterface
 
     private ?int $sizeOf = null;
 
-    private ?array $shape = null;
+    private array $shape = [];
 
     public function isValid(mixed $value): bool
     {
@@ -50,7 +50,7 @@ class ArraySchema implements SchemaInterface
 
     private function checkShape(mixed $value): void
     {
-        if ($this->shape && is_array($value)) {
+        if (count($this->shape) > 0 && is_array($value)) {
             foreach ($this->shape as $key => $rule) {
                 if (!array_key_exists($key, $value) || !$rule->isValid($value[$key])) {
                     throw new ValidateException('shape');
