@@ -60,6 +60,6 @@ class Validator
             self::TYPE_ARRAY,
             self::TYPE_STRING,
             self::TYPE_NUMBER
-        ]);
+        ], true);
     }
 }

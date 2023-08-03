@@ -36,14 +36,14 @@ class StringSchema implements SchemaInterface
     }
     private function checkMinLength(mixed $value): void
     {
-        if ($this->minLength && is_string($value) && strlen($value) < $this->minLength) {
+        if ($this->minLength > 0 && is_string($value) && strlen($value) < $this->minLength) {
             throw new ValidateException("not a string");
         }
     }
 
     private function checkContains(mixed $value): void
     {
-        if ($this->contains && !str_contains($value, $this->contains)) {
+        if (strlen($this->contains) > 0 && !str_contains($value, $this->contains)) {
             throw new ValidateException("not a string");
         }
     }
@@ -55,7 +55,7 @@ class StringSchema implements SchemaInterface
     }
 
 
-    public function contains(mixed $string): self
+    public function contains(string $string): self
     {
         $this->contains = $string;
         return $this;

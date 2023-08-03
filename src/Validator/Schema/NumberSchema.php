@@ -45,7 +45,7 @@ class NumberSchema implements SchemaInterface
 
     private function checkRange(mixed $value): void
     {
-        if (!empty($this->range)) {
+        if (count($this->range) > 0) {
             [$min, $max] = $this->range;
 
             if ((int)$value < $min || (int)$value > $max) {
