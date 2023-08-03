@@ -1,7 +1,9 @@
 <?php
-namespace Hexlet\Validator\Schema;
+namespace Hexlet\Validator\Schema\Traits;
 
-trait RequiredTrait
+use Hexlet\Validator\Schema\ValidateException;
+
+trait Required
 {
     protected bool $required = false;
 

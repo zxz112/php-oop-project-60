@@ -1,9 +1,12 @@
 <?php
 namespace Hexlet\Validator\Schema;
 
+use Hexlet\Validator\Schema\Traits\CustomValidator;
+use Hexlet\Validator\Schema\Traits\Required;
+
 class StringSchema implements SchemaInterface
 {
-    use RequiredTrait, CustomValidatorTrait;
+    use Required, CustomValidator;
     private int $minLength = 0;
     private string $contains = "";
     public function __construct()

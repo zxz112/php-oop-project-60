@@ -21,7 +21,7 @@ class CustomValidatorTest extends TestCase
         $this->assertTrue($schema->isValid('Hexlet'));
 
         $fn = fn($value, $min) => $value >= $min;
-        $v->addValidator(Validator::TYPE_STRING, 'min', $fn);
+        $v->addValidator(Validator::TYPE_NUMBER, 'min', $fn);
         $schema = $v->number()->test('min', 5);
 
         $this->assertFalse($schema->isValid(3)); // false

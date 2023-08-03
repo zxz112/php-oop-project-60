@@ -11,5 +11,11 @@
     "require-dev": {
         "phpunit/phpunit": "^10",
         "vimeo/psalm": "^5.14"
+    },
+    "scripts": {
+        "lint": "phplint",
+        "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php --allow-risky=yes",
+        "psalm": "psalm --config=psalm.xml",
+        "test": "phpunit --colors=always"
     }
 }

@@ -1,7 +1,9 @@
 <?php
-namespace Hexlet\Validator\Schema;
+namespace Hexlet\Validator\Schema\Traits;
 
-trait CustomValidatorTrait
+use Hexlet\Validator\Schema\ValidateException;
+
+trait CustomValidator
 {
     private array $validators = [];
     private array $enabledValidators = [];
@@ -13,7 +15,7 @@ trait CustomValidatorTrait
     public function test(string $name, $value) :self
     {
         if (!array_key_exists($name, $this->validators)) {
-            throw new \Exception('eerr');
+            throw new ValidateException('custom validator error');
         }
 
         $this->enabledValidators[$name] = [

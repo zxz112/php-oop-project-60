@@ -23,7 +23,7 @@ class Validator
     public function array() :ArraySchema
     {
         $schema = new ArraySchema();
-        $this->setValidators($schema, self::TYPE_STRING);
+        $this->setValidators($schema, self::TYPE_ARRAY);
 
         return $schema;
     }
@@ -31,14 +31,14 @@ class Validator
     public function number() :NumberSchema
     {
         $schema = new NumberSchema();
-        $this->setValidators($schema, self::TYPE_STRING);
+        $this->setValidators($schema, self::TYPE_NUMBER);
 
         return $schema;
     }
 
     private function setValidators(SchemaInterface $schema, string $type) :void
     {
-        if (is_array($this->validators[$type])) {
+        if (array_key_exists($type, $this->validators) && is_array($this->validators[$type])) {
             $schema->setValidators($this->validators[$type]);
         }
     }

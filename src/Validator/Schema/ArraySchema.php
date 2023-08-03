@@ -1,9 +1,12 @@
 <?php
 namespace Hexlet\Validator\Schema;
 
+use Hexlet\Validator\Schema\Traits\CustomValidator;
+use Hexlet\Validator\Schema\Traits\Required;
+
 class ArraySchema implements SchemaInterface
 {
-    use RequiredTrait, CustomValidatorTrait;
+    use Required, CustomValidator;
 
     private ?int $sizeOf = null;
 

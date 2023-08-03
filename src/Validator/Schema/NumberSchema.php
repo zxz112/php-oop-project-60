@@ -1,9 +1,12 @@
 <?php
 namespace Hexlet\Validator\Schema;
 
+use Hexlet\Validator\Schema\Traits\CustomValidator;
+use Hexlet\Validator\Schema\Traits\Required;
+
 class NumberSchema implements SchemaInterface
 {
-    use RequiredTrait, CustomValidatorTrait;
+    use Required, CustomValidator;
     private array $range = [];
     private bool $positive = false;
 
