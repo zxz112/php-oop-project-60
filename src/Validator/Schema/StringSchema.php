@@ -12,10 +12,6 @@ class StringSchema implements SchemaInterface
 
     private int $minLength = 0;
     private string $contains = "";
-    public function __construct()
-    {
-        $this->required = false;
-    }
 
     public function isValid(mixed $value): bool
     {
@@ -59,7 +55,7 @@ class StringSchema implements SchemaInterface
     }
 
 
-    public function contains($string): self
+    public function contains(mixed $string): self
     {
         $this->contains = $string;
         return $this;

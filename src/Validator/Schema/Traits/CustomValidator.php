@@ -13,7 +13,7 @@ trait CustomValidator
         $this->validators = $validators;
     }
 
-    public function test(string $name, $value): self
+    public function test(string $name, mixed $value): self
     {
         if (!array_key_exists($name, $this->validators)) {
             throw new ValidateException('custom validator error');
