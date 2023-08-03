@@ -1,4 +1,5 @@
 <?php
+
 namespace Hexlet\Validator\Schema;
 
 use Hexlet\Validator\Schema\Traits\CustomValidator;
@@ -6,7 +7,9 @@ use Hexlet\Validator\Schema\Traits\Required;
 
 class StringSchema implements SchemaInterface
 {
-    use Required, CustomValidator;
+    use Required;
+    use CustomValidator;
+
     private int $minLength = 0;
     private string $contains = "";
     public function __construct()
@@ -29,34 +32,34 @@ class StringSchema implements SchemaInterface
         return true;
     }
 
-    private function checkType(mixed $value) :void
+    private function checkType(mixed $value): void
     {
         if (!is_null($value) && !is_string($value)) {
             throw new ValidateException("not a string");
         }
     }
-    private function checkMinLength(mixed $value) :void
+    private function checkMinLength(mixed $value): void
     {
         if ($this->minLength && is_string($value) && strlen($value) < $this->minLength) {
             throw new ValidateException("not a string");
         }
     }
 
-    private function checkContains(mixed $value) :void
+    private function checkContains(mixed $value): void
     {
         if ($this->contains && !str_contains($value, $this->contains)) {
             throw new ValidateException("not a string");
         }
     }
 
-    public function minLength(int $length) :self
+    public function minLength(int $length): self
     {
         $this->minLength = $length;
         return $this;
     }
 
 
-    public function contains($string) :self
+    public function contains($string): self
     {
         $this->contains = $string;
         return $this;

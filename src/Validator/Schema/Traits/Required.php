@@ -1,4 +1,5 @@
 <?php
+
 namespace Hexlet\Validator\Schema\Traits;
 
 use Hexlet\Validator\Schema\ValidateException;
@@ -13,7 +14,7 @@ trait Required
         return $this;
     }
 
-    private function checkRequired(mixed $value) :void
+    private function checkRequired(mixed $value): void
     {
         if ($this->required && empty($value)) {
             throw new ValidateException('required');

@@ -1,4 +1,5 @@
 <?php
+
 namespace Hexlet\Tests\Validator;
 
 use Hexlet\Validator\Schema\ArraySchema;
