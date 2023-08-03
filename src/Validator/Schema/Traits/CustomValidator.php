@@ -29,7 +29,7 @@ trait CustomValidator
 
     private function checkCustomValidators(mixed $value): void
     {
-        if (empty($this->enabledValidators)) {
+        if (count($this->enabledValidators) === 0) {
             return;
         }
 

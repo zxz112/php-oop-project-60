@@ -17,8 +17,8 @@ class ArraySchema implements SchemaInterface
     public function isValid(mixed $value): bool
     {
         try {
-            $this->checkRequired($value);
             $this->checkType($value);
+            $this->checkRequired($value);
             $this->checkCustomValidators($value);
             $this->checkSizeOf($value);
             $this->checkShape($value);
@@ -32,7 +32,13 @@ class ArraySchema implements SchemaInterface
     private function checkType(mixed $value): void
     {
         if (!is_null($value) && !is_array($value)) {
-            throw new ValidateException('type');
+            throw new ValidateException('wrong type');
+        }
+    }
+    private function checkRequired(mixed $value): void
+    {
+        if ($this->required && !is_array($value)) {
+            throw new ValidateException('required');
         }
     }
     private function checkSizeOf(mixed $value): void

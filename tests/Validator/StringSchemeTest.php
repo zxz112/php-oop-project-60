@@ -11,9 +11,7 @@ class StringSchemeTest extends TestCase
     {
         $scheme = new StringSchema();
 
-//        $this->assertTrue($scheme->isValid(''));
         $this->assertTrue($scheme->isValid(null));
-//        $this->assertTrue($scheme->isValid('what does the fox say'));
 
         $scheme->required();
 

@@ -14,10 +14,5 @@ trait Required
         return $this;
     }
 
-    private function checkRequired(mixed $value): void
-    {
-        if ($this->required && empty($value)) {
-            throw new ValidateException('required');
-        }
-    }
+    abstract private function checkRequired(mixed $value);
 }

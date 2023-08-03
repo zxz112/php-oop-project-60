@@ -16,8 +16,8 @@ class NumberSchema implements SchemaInterface
     public function isValid(mixed $value): bool
     {
         try {
-            $this->checkRequired($value);
             $this->checkType($value);
+            $this->checkRequired($value);
             $this->checkCustomValidators($value);
             $this->checkPositive($value);
             $this->checkRange($value);
@@ -28,11 +28,16 @@ class NumberSchema implements SchemaInterface
         return true;
     }
 
-
     private function checkType(mixed $value): void
     {
         if (!is_null($value) && !is_numeric($value)) {
-            throw new ValidateException('type');
+            throw new ValidateException('wrong type');
+        }
+    }
+    private function checkRequired(mixed $value): void
+    {
+        if ($this->required && !is_numeric($value)) {
+            throw new ValidateException('required');
         }
     }
 

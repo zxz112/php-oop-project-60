@@ -16,8 +16,8 @@ class StringSchema implements SchemaInterface
     public function isValid(mixed $value): bool
     {
         try {
-            $this->checkRequired($value);
             $this->checkType($value);
+            $this->checkRequired($value);
             $this->checkCustomValidators($value);
             $this->checkMinLength((string)$value);
             $this->checkContains((string)$value);
@@ -28,12 +28,20 @@ class StringSchema implements SchemaInterface
         return true;
     }
 
+    private function checkRequired(mixed $value): void
+    {
+        if ($this->required && (!is_string($value) || strlen($value) === 0)) {
+            throw new ValidateException('required');
+        }
+    }
+
     private function checkType(mixed $value): void
     {
         if (!is_null($value) && !is_string($value)) {
-            throw new ValidateException("not a string");
+            throw new ValidateException('wrong type');
         }
     }
+
     private function checkMinLength(mixed $value): void
     {
         if ($this->minLength > 0 && is_string($value) && strlen($value) < $this->minLength) {
