@@ -43,7 +43,7 @@ class NumberSchema implements SchemaInterface
 
     private function checkPositive(mixed $value): void
     {
-        if ($this->positive && (int)$value < 0) {
+        if ($this->positive && (int)$value <= 0) {
             throw new ValidateException('positive');
         }
     }
